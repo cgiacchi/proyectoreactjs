@@ -1,26 +1,40 @@
-import './Navbar.css';  
-import CartWidget from '../CartWidget/CartWidget';
-import React from 'react'
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import CartWidget from "../CartWidget/CartWidget";
+import "./Navbar.css"
 
-const Navbar = () => {
-    return (
-        <div className="row header__Navbar">
-        <div className="col-lg-3">
-            <a href="home"><img className="header__logo header__nav" src='./images/merlotblanco.png' alt="logo Merlot"></img></a>
+const NavBar = () => {
+    return(
+            <div className="row header__Navbar">
+                        <div className="col-lg-9 header__nav">
+                            <nav className="navbar navbar-expand-lg header__Navbar">
+                                <div className="container-fluid">
+                                    <Link className="navbar-brand" to={"/"}><img className="header__logo header__nav" src='../images/merlotbordo.png' alt="logo Merlot" width={200} /></Link>
+                                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span className="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div className="collapse navbar-collapse" id="navbarNav">
+                                    <ul className="navbar-nav header__nav">
+                                        <li className="nav-item header__nav">
+                                        <NavLink className="nav-link" aria-current="page" to="/category/suites" >SUITES</NavLink>
+                                        </li>
+                                        <li className="nav-item header__nav">
+                                        <NavLink className="nav-link" to="/category/studios">STUDIOS</NavLink>
+                                        </li>
+                                        <li className="nav-item header__nav">
+                                        <NavLink className="nav-link" to="/category/spa">SPA</NavLink>
+                                        </li>      
+                                    </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                        <div className="col-lg-3 cartWidget">
+                            <CartWidget/>
+                        </div>        
             </div>
-            <div className="col-lg-9">
-            <nav className="header__menu" data-aos="zoom-in">
-                <ul className="header__nav">
-                    <li><a className="navbar-brand header__nav" href='/departamentos'>DEPARTAMENTOS</a></li>
-                    <li><a className="navbar-brand header__nav" href='/suites'>SUITES</a></li>
-                    <li><a className="navbar-brand header__nav" href='/studios'>STUDIOS</a></li>
-                    <li><a className="navbar-brand header__nav" href='/spa'>SPA</a></li>
-                    <a href='/carrito'><CartWidget/></a>
-                </ul>
-            </nav>     
-        </div>
-        </div>
-        
+
     )
 }
-export default Navbar
+
+export default NavBar;

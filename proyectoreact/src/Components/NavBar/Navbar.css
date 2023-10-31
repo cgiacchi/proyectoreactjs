@@ -1,28 +1,21 @@
 .header__Navbar{
-    background-color: #990f0f;
+    background-color: rgb(241, 241, 241);
+    height: 100px;
+    margin-top:0rem;
 }
 
 .header__nav{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    z-index: 200;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-size:1.3rem;
     font-weight: bold;
     list-style-type: none;
-    color:white;
     text-decoration: none;
-    margin-top: 25px;
+}
+.nav-link{
+    color:brown;
 }
 
-.header__logo{
-    display: flex;
-    flex-flow: row wrap;
-    justify-items:flex-start;
-    align-items: center;
-    height: 8rem;
-    margin-left: 0rem;
-    margin-top: 0rem;
-}

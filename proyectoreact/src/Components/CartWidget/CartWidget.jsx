@@ -7,7 +7,7 @@ const CartWidget = () => {
     <>
         <div className='div-cart'>
         <button className='button-cart'>
-          <TfiShoppingCart style ={{color: "white", fontSize: "1.5em"}} />        
+          <TfiShoppingCart style ={{color: "brown", fontSize: "1.5em"}} />        
         </button>
         </div>
     </>

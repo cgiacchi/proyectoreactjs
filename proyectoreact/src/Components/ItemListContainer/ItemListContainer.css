@@ -1,0 +1,32 @@
+.main__greeting{
+    margin-top:3rem;
+    margin-bottom: 3rem;
+}
+
+.greeting{
+    display: flex;
+    font-size: 22px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    text-align: center;
+    color: #990f0f;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+    letter-spacing: 1.5px;
+}
+
+.hr_greetingLarga{  
+    color: #640404;
+    width: 1000px;
+    opacity: 1;
+    margin-left: 4rem;
+}
+.hr_greetingCorta{ 
+    color: #640404;
+    width: 700px;
+    margin-left: 14rem;
+    opacity: 1;
+}
