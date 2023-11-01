@@ -1,3 +1,15 @@
-card__detail{
+.img-detail{
     margin-top: 2rem;
+    margin-left: 3rem;
+    width:45%;
+}
+
+.card__detail{
+    margin-top:2rem;
+    margin-left: 2rem;
+}
+
+.price{
+    font-size: 20px;
+    font-weight: bold;
 }
