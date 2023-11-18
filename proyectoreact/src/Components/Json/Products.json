@@ -25,7 +25,7 @@
     "imagen": "../images/Suites/suitestandard.jpg",
     "huespedes": 2,
     "precio":20000,
-    "stock": 4
+    "stock": 8
     },
     {"id":4,
     "categoria": "studios",
@@ -34,7 +34,7 @@
     "imagen": "../images/Studios/studiostandard.jpg",
     "huespedes": 2,
     "precio":22000,
-    "stock": 8
+    "stock": 4
     },
     {"id":5,
     "categoria": "suites",
@@ -93,20 +93,20 @@
     {"id":11,
     "categoria": "spa",
     "nombre": "Circuito de spa",
-    "descripcion":"Servicio de 45 minutos que incluye hidromasaje, sauna y ducha escocesa. ",
+    "descripcion":"Servicio de 45 minutos que incluye hidromasaje, sauna y ducha escocesa.",
     "imagen": "../images/Studios/circuito.webp",
     "huespedes": 2,
     "precio":10000,
-    "stock": 4
+    "stock": 10
     },
     {"id":12,
     "categoria": "spa",
     "nombre": "Masajes",
     "descripcion":"Masajes de treinta minutos o una hora. ",
     "imagen": "../images/Studios/masajes.png",
-    "huespedes": 2,
+    "huespedes": 1,
     "precio":15000,
-    "stock": 4
+    "stock": 10
     },
     {"id":13,
     "categoria": "spa",
@@ -115,6 +115,6 @@
     "imagen": "../images/Studios/circuitomasajes.jpg",
     "huespedes": 2,
     "precio":20000,
-    "stock": 4
+    "stock": 10
     }
 ]
