@@ -23,7 +23,7 @@ const Cart = () => {
               <Link to='/Checkout' className="Button">Finalizar Compra</Link>
               <h3 className="total">Total: ${total}</h3>
           </div>
-              
+               
         </div>
       )
 }

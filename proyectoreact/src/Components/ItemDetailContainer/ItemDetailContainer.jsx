@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from "react-router-dom"
 import {doc, getDoc, getFirestore} from 'firebase/firestore'
-import { Flex } from "@chakra-ui/react"
+// import { Flex } from "@chakra-ui/react"
 import Loading from "../Loading/Loading"
 
 const ItemDetailContainer = () => {
@@ -35,18 +35,21 @@ const ItemDetailContainer = () => {
         }
     return(
         
-        <Flex 
-        flexWrap="wrap"
-        justifyContent="space-around"
-        alignItems="center"
-        gap={4}
-        >
-           
-            <ItemDetail productos={producto} />
-        </Flex>
-    )
-}
-
+<div className="estilo">
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          gap: '16px', 
+        }}
+      >
+        <ItemDetail productos={producto} />
+      </div>
+    </div>
+  );
+};
 export default ItemDetailContainer
 
 
