@@ -1,19 +1,19 @@
 import React from 'react'
-import Item from '../Item/Item';
-
+import Item from '../Item/Item'
+import './ItemList.css'
 
 const ItemList = ({item}) => {
-    return (
-    <div className='row' id='itemlist'>
-    {item?.map(item=>
-    <div className='col-md-4'
+  return (
+    <div className='row'>
+      {item.map(item=>
+      <div className='col-md-3'
         key={item.id}>
-        <Item item={item}/> 
+        <Item item={item}/>
+      </div>
+      )
+      }
     </div>
-    )   
-    }
-    </div>
-    )
+  )
 }
 
 export default ItemList

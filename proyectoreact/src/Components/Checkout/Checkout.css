@@ -1,0 +1,83 @@
+.form-general{
+    font-size: 12px;
+    align-content: center;
+    background-color:#faf7f2;
+    border-radius:8px;
+    box-shadow:0 0 15px -6px #000;
+    margin-left: 2rem;
+    margin-top:2rem;
+    padding:10px 20px;
+    max-width:calc(45vw - 40px);
+    box-sizing:border-box;
+}
+
+.titulo-form{
+    margin:10px 0;
+    padding-bottom:10px;
+    color:#640404;
+    border-bottom: 2px solid #640404;
+}
+
+.cuerpo-form{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    height: auto;
+    width:100%;
+    font-size:16px;
+    color:#640404;
+    padding:15px 32px;
+    border:2px solid #640404;
+    }
+
+.form-boton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: #640404;
+    border: 2px solid;
+    color: #faf7f2;
+    padding: 15px 16px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 28px;
+    margin-top: 3rem;
+    margin-right:18px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+}
+
+.input-check{
+    margin-left: 1rem;
+    border-radius: 16px;
+
+}
+.form-group{
+    margin-top:1rem;
+}
+
+
+
+
+.regresar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    color: #640404;
+    padding: 15px 8px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    outline:none;
+    border:none;
+    background-color:#faf7f2 ;
+}
+
+.error-campos{
+    display: flex;
+    flex-flow: column wrap;
+}

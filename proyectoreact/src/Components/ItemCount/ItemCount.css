@@ -1,0 +1,33 @@
+.card-reservar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #640404;
+    padding: 8px 20px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-left:0rem;
+    margin-right: 4rem;
+}
+
+.counter{
+    color: #640404;
+    padding: 6px 16px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.counter-number{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.contenedor-counter{
+    margin-top:1rem;
+}

@@ -1,42 +1,35 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import './ItemCount.css';
 
-const ItemCount = ({stockItems}) => {
+const ItemCount = ({ initial, stock, onAdd }) => {
+	const [count, setCount] = useState(parseInt(initial));
+	const decrease = () => {
+		setCount(count - 1);
+	};
 
-    const [counter, setCounter] = useState(1);
-    const [stock, setStock] = useState(stockItems);
+	const increase = () => {
+		setCount(count + 1);
+	};
 
-    const incrementarStock = () => {
-        if (counter < stock) {
-            setCounter(counter + 1);
-        } 
-    }
+	useEffect(() => {
+		setCount(parseInt(initial));
+	}, [initial]);
 
-    const decrementarStock = () => {
-        if (counter > 1) {
-            setCounter(counter - 1)
-        }
-        
-    }
+	return (
+		<div className="container contenedor-counter" id="itemcount">
+			<div className="row">
+				<div className="col-lg-6">
+					<button disabled={count <= 1} onClick={decrease} className="counter"> - </button>
+					<span className="counter-number">{count}</span>
+					<button disabled={count >= stock} onClick={increase} className="counter"> + </button>
+				</div>
+				<div className="col-lg-4 " >
+					<button disabled={stock <= 0} onClick={() => onAdd(count)} className="card-reservar"> Reservar </button>
+				</div>
+			</div>
+		</div>
 
-    return(
-        <div className="container" id="itemcount">
-            <div className="row mb-3">
-            <div className="col-lg-6">
-            </div>
-                <div className="col-lg-2">
-                    <div className="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" className="btn btn-outline-primary" onClick={decrementarStock} >-</button>
-                        <button type="button" className="btn btn-outline-primary">{counter} </button>
-                        <button type="button" className="btn btn-outline-primary" onClick={incrementarStock} >+</button>
-                    </div>
-                </div>
-        <div className="col-lg-2">
-            <button type="button" className="btn btn-outline-primary" >Agregar al carrito</button>    
-                </div>
-            </div>
-            </div>
-    )
-}
+	);
+};
 
 export default ItemCount;

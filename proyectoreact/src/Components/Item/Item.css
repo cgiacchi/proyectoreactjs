@@ -1,6 +1,13 @@
 .card-text{
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 18px;
+    color:#640404;
+
+}
+
+.card-hosts{
+    font-weight: bold;
 
 }
 .card{

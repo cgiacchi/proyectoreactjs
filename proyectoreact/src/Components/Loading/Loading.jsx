@@ -1,6 +1,4 @@
 import React from "react";
-// import { Spinner } from "@chakra-ui/react";
-// import './Loading.css'
 
 const Loading = () => {
     return(

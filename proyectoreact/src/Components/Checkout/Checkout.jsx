@@ -1,75 +1,169 @@
-import { useState, useContext } from 'react'
-import { CartContext } from '../../Context/CartContext'
-import { collection, addDoc, getFirestore} from 'firebase/firestore'
-// import './Checkout.css'
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { useCartContext } from "../../Context/CartContext"
+import { Link } from 'react-router-dom';
+import { getFirestore, collection, addDoc, updateDoc, doc, getDoc, } from 'firebase/firestore';
+import './Checkout.css'
 
-const Checkout = () => {
-    const { cart,  clearCart, total } = useContext(CartContext)
-    const [user, setUser] = useState({})
-    const [validateEmail, setvalidateEmail] = useState("")
-    const [orderId, setOrderId] = useState("")
 
-    const db = getFirestore()
-    const datosComprador = (e) =>{
-        
-        setUser({
-            ...user,
-            [e.target.name]:e.target.value
-        })
-    }
-    const finalizar = (e) =>{
-        
-        e.preventDefault()
-                const orden = {
-            user,
-            item: cart,
-            total: total,         
-            fecha: new Date(),
-        }
-        const ventas = collection(db,'orden')
-        addDoc(ventas, orden)
-        .then (({ id })=> {
-            setOrderId(id)
-            clearCart()
-        })
-        .catch ((error)=>console.log(error))
+export const Checkout = () => {
+
+  const { cart, eliminar, totalPrice } = useCartContext();
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [correo2, setCorreo2] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [error, setError] = useState('');
+  const [ordenId, setOrdenId] = useState('');
+
+  const manejodeForm = (e) => {
+    e.preventDefault();
+    if (!nombre || !apellido || !correo || !correo2|| !telefono ) {
+      setError('Por favor completa todos los campos');
+      return;
     }
 
-    return (
-    <div className='check'>
-        {orderId !== "" 
-        ? <div className='div-compfin'>
-            
-            <h3 className='titulo-form'>Felicidades, tu compra fue registrada con exito</h3>
-            <h4 className='titulo-form'>El id de su compra es: <span>{orderId}</span></h4>
-            <Link to='/' className="boton-4">Seguir comprando</Link> 
-            </div>
-        :     <div className='div-checkout'>
-        <h2 className='titulo'>Terminar Compra</h2>
-        <h4 className='sub'>Por favor compltar con sus datos</h4>
-        <form className='div-form' onSubmit={finalizar}>
-            <div>
-                <label className='form-label'>Nombre Completo</label>
-                <input onChange={datosComprador} className='form-control' type="text" placeholder='Nombre' name='nombre' required/>
-            </div>
-            <div>
-                <label className='form-label'>Telefono</label>
-                <input onChange={datosComprador} className='form-control' type="tel" placeholder='Ingrese Celular' name='telefono' required/>
-            </div>
-            <div>
-                <label className='form-label'>Direccion de email</label>
-                <input onChange={datosComprador} className='form-control' type="email" placeholder='Ingrese Email' name='mail' required/>
-            </div>
-            <div>
-                <label className='form-label' >Repita su email</label>
-                <input onChange={((e)=>setvalidateEmail(e.target.value))} className='form-control' type="email" name='mail' placeholder='Repita Email' required/>
-            </div>
-            <button className='boton' type='submit' disabled={validateEmail !== user.mail}>Generar Orden</button>
-        </form>
-    </div>
+    if (correo !== correo2) {
+      setError('Los campos de email no coinciden');
+      return;
     }
-    </div>
+    const total = totalPrice();
+    const orden = { items: cart.map((producto) => ({
+        id: producto.id, nombre: producto.title, cantidad: producto.quantity,})),
+      total: total,
+      fecha: new Date(),
+      nombre,
+      apellido,
+      telefono,
+      correo,
+    };
+
+    Promise.all(
+      orden.items.map(async (productoOrden) => {
+        const db = getFirestore();
+        const productoRef = doc(db, 'products', productoOrden.id);
+
+        const productoDoc = await getDoc(productoRef);
+        const stockActual = productoDoc.data().stock;
+
+        await updateDoc(productoRef, {
+          stock: stockActual - productoOrden.cantidad,
+        });
+      })
     )
-    }
+      .then(() => {
+        const db = getFirestore();
+        addDoc(collection(db, 'orders'), orden)
+          .then((docRef) => {
+            setOrdenId(docRef.id);
+            eliminar();
+          })
+          .catch((error) => {
+            console.log('Error al generar la orden', error);
+            setError('Error en orden');
+          });
+      })
+      .catch((error) => {
+        console.log('No se puede actualizar la cantidad de departamentos', error);
+        setError('No se actualizo el departamento');
+      });
+
+    setNombre('');
+    setApellido('');
+    setCorreo('');
+    setCorreo2('');
+    setTelefono('');
+  };
+
+  return (
+    <>
+    <div className='form-general'>
+      <h2 className="titulo-form">
+        Rellena tus datos!
+      </h2>
+
+      <form onSubmit={manejodeForm} className='cuerpo-form'>
+        {cart.map((producto) => (
+          <div className="item-check" key={producto.id}>
+            <p>
+              {' '}
+              {producto.nombre} {producto.cantidad}
+            </p>
+            <p> {producto.precio} </p>
+          </div>
+        ))}
+
+        <div className="form-group">
+          <label className="lab-check">Nombre </label>
+          <input
+            className="input-check"
+            type="text"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="lab-check">Apellido </label>
+          <input
+            className="input-check"
+            type="text"
+            value={apellido}
+            onChange={(e) => setApellido(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label className="lab-check">Correo electronico </label>
+          <input
+            className="input-check"
+            type="correo"
+            value={correo}
+            onChange={(e) => setCorreo(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="lab-check">Confirme su correo </label>
+          <input
+            className="input-check"
+            type="correo2"
+            value={correo2}
+            onChange={(e) => setCorreo2(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="lab-check">Telefono </label>
+          <input
+            className="input-check"
+            type="number"
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
+          />
+        </div>
+
+        {error && <p className="error-campos">{error}</p>}
+
+        {ordenId && (
+          <p className="orden">
+            ¡Gracias por tu compra! <br /> Este es tu numero de orden: <br />{' '}
+            {ordenId}{' '}
+          </p>
+        )}
+
+          <button className='form-boton' type="submit">
+            Reservar
+          </button>
+        <br/>
+        <div>
+        <Link to="/" className="regresar">
+          <button className="regresar">Volver al inicio</button>
+        </Link>
+        </div>
+      </form>
+      </div>
+    </>
+  );
+};
+
 export default Checkout;

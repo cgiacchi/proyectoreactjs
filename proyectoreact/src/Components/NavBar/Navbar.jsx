@@ -16,7 +16,7 @@ const NavBar = () => {
                                     <div className="collapse navbar-collapse" id="navbarNav">
                                     <ul className="navbar-nav header__nav">
                                         <li className="nav-item header__nav">
-                                        <NavLink className="nav-link" aria-current="page" to="/category/suites" >SUITES</NavLink>
+                                        <NavLink className="nav-link" aria-current="page" to="/category/suites">SUITES</NavLink>
                                         </li>
                                         <li className="nav-item header__nav">
                                         <NavLink className="nav-link" to="/category/studios">STUDIOS</NavLink>
@@ -30,8 +30,10 @@ const NavBar = () => {
                             </nav>
                         </div>
                         <div className="col-lg-3 cartWidget">
-                            <CartWidget/>
-                        </div>        
+                        <Link className="nav-link" to="/cart">
+                            <CartWidget className="cart-icon" />
+                        </Link>
+            </div>
             </div>
 
     )

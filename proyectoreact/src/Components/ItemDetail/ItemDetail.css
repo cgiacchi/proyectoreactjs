@@ -1,15 +1,60 @@
-.img-detail{
-    margin-top: 2rem;
+.img-fluid{
+    display: flex;
+    flex-flow: row wrap;
+    width: 90%;
+    height: 450px;
+    justify-content: flex-start;
     margin-left: 3rem;
-    width:45%;
+    margin-top: 2rem;
+    margin-right:0rem;
+    border-radius: 10px;
+
 }
 
-.card__detail{
-    margin-top:2rem;
-    margin-left: 2rem;
+.card-title{
+    color: #990f0f;
+    font-size: 28px;
+    margin-top: 4rem;
+    margin-right: 1rem;
+    margin-left:1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.card-detail{
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 1rem;
+    margin-right:5rem;
+    font-size: 16px;
+    color: white;
+    padding: 1.2rem;
+    border-color: black;
+    border-radius: 10px;
+
+    border-width: 1px;
+    border-style: solid;
+    color: black;
 }
 
-.price{
-    font-size: 20px;
+.card-price{
+    font-size: 18px;
     font-weight: bold;
+}
+
+
+
+.terminar-compra{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: #640404;
+    color: #faf7f2;
+    padding: 12px 26px;
+    text-align: center;
+    border-radius: 28px;
+    letter-spacing: 1.4px;
+    margin-top: 1rem;
+    text-decoration: none;
 }
