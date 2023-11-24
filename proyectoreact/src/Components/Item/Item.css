@@ -13,9 +13,9 @@
 .card{
     margin-bottom: 2rem;
 }
-.details{
+.detalles{
     margin-bottom: 0.5rem;
-    margin-left: 4rem;
+    margin-left: 2.5rem;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -28,3 +28,4 @@
     border-radius: 10px;
     font-weight: bold;
 }
+

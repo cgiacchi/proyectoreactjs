@@ -13,6 +13,8 @@ const Item = ({item}) => {
         <p className='card-text'>{item.title}</p>
         <p className='card-hosts'>Huespedes: {item.hosts}</p>
         <p className='card-hosts'> $ {item.price}</p>
+        <button className='detalles'>Detalles</button>
+
         </div>
     </div>  
     </div>

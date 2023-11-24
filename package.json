@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^6.5.1",
     "tar": "^6.2.0"
   }
 }
